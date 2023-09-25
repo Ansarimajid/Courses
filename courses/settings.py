@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
