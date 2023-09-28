@@ -16,10 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the Django project files into the container
 COPY . /app/
 
-# Run migrations and migrate the database
-RUN python manage.py makemigrations
-RUN python manage.py migrate
-
 # Expose the port the application will run on
 EXPOSE 8000
 
