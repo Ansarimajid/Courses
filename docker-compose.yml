@@ -3,13 +3,9 @@ services:
     image: ansmajid/internship-2:latest 
     ports:
       - "8000:8000"
-    volumes:
-      - ./Courses:/Courses
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
   web:
     image: ansmajid/internship-1:latest 
     ports:
       - "3000:3000"
-    volumes:
-      - ./courses-front:/courses-front
