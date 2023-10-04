@@ -26,11 +26,44 @@ SECRET_KEY = 'django-insecure-go26911r963q$su=ebro)*f2crdnda7v@r1rpf8q754rb3)les
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
 
-# Application definition
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+CORS_URLS_REGEX = r"^/api/.*$"
+
+from corsheaders.defaults import default_methods
+
+CORS_ALLOW_METHODS = (
+    *default_methods,
+    "POKE",
+)
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -52,7 +85,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'courses.urls'
